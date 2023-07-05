@@ -1,0 +1,51 @@
+p{
+    color:blue;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.file-icon {
+    display: none;
+    margin-left: 5px;
+}
+
+.file-input:checked + .file-label {
+    background-color: #2980b9;
+}
+
+.file-input:disabled + .file-label {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.file-input:disabled + .file-label .file-icon {
+    display: inline;
+    vertical-align: middle;
+}

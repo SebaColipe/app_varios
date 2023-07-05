@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de inicio</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <h1>Bienvenidos a mi página</h1>
+    <form action="/correos" method="POST">
+        <textarea name="texto" rows="10" cols="50" placeholder="Ingresa tu texto aquí" required></textarea>
+        <textarea name="texto_eliminar" rows="10" cols="50" placeholder="Ingresa tu texto aquí para eliminar" required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+    
+</body>
+</html>

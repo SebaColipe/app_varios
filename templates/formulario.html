@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Cambio</title>
+</head>
+<body>
+    <h1>Formulario de Cambio</h1>
+    <form method="post" action="/cambio" enctype="multipart/form-data">
+        <label for="archivos">Archivos:</label>
+        <input type="file" id="archivos" name="archivos" multiple required><br><br>
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" name="numero" required><br><br>
+        
+        <input type="submit" value="Realizar Cambio">
+    </form>
+</body>
+</html>
