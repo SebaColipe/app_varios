@@ -1,7 +1,7 @@
 import openpyxl 
 
 Meses = {
-    "Jan": "01",
+    "Enero": "01",
     "Feb": "02",
     "Mar": "03",
     "Apr": "04",
@@ -10,9 +10,9 @@ Meses = {
     "Jul": "07",
     "Aug": "08",
     "Sep": "09",
-    "Oct": "10",
-    "Nov": "11",
-    "Dec": "12"
+    "Octubre": "10",
+    "Noviembre": "11",
+    "Diciembre": "12"
 }
 
 #hora_1 oblitario
@@ -62,7 +62,7 @@ def hora_termino(hora):
     return texto
 
 def convertir_formato_fecha_tita(texto):
-    descripcion, fecha = texto.split(" -- ")
+    descripcion, fecha = texto.split(" --> ")
     mes, year = fecha.split(",")
     mes, dia  = mes.split(" ")
     if int(dia) < 10:

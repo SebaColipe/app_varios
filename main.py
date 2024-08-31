@@ -3,12 +3,41 @@ from werkzeug.utils import secure_filename
 from excel_python import agregar_a_excel
 import os
 from funciones import procesar_archivos, eliminar_texto
+from aumentar_volumen import proceso_aumentar_volumen
 
 app = Flask(__name__)
 
+mime_types_video = {
+    '.mp4': 'video/mp4',
+    '.avi': 'video/x-msvideo',
+    '.mkv': 'video/x-matroska',
+    '.webm': 'video/webm',
+    '.mov': 'video/quicktime',
+    '.flv': 'video/x-flv',
+    '.wmv': 'video/x-ms-wmv',
+    '.mpeg': 'video/mpeg',
+    '.mpg': 'video/mpeg',
+    '.3gp': 'video/3gpp',
+    '.ogg': 'video/ogg',
+}
+
+
 @app.route("/")
 def index():
-    return render_template('pagina_inicio.html')
+    return render_template('pagina_inicio.html', nombre="Sebastian")
+
+
+@app.route("/subir_volumen", methods = ['GET','POST'])
+def subir_volumen_route():
+    if request.method == 'POST':
+        archivo = request.files.getlist('archivo')[0]
+        factor = request.form.get('numero')
+        print(archivo.filename)
+        archivo_resultado = proceso_aumentar_volumen(archivo, factor=factor)
+        extension = os.path.splitext( archivo_resultado)[1]
+        return send_file(archivo_resultado, as_attachment=True, mimetype=mime_types_video[extension])
+
+    return render_template('pagina_subir_volumen.html')
 
 @app.route("/correos", methods = ['GET','POST'])
 def correos():
@@ -22,7 +51,10 @@ def correos():
 
 @app.route('/saludo/<nombre>')
 def saludo(nombre):
-    return "¡Hola, {}!".format(nombre)
+
+    return {
+        "message":"¡Hola, {}!".format(nombre)
+    }
 
 @app.route('/pagina')
 def pagina():
@@ -80,4 +112,5 @@ def upload_file():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
+
